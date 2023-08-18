@@ -11,6 +11,10 @@ Comments.init (
             primaryKey: true,
             autoIncrement: true,
         },
+        content: {
+            type: DataTypes.TEXT,
+            allowNull: false,
+        },
         user_id: {
             type: DataTypes.INTEGER,
             allowNull: false,
@@ -19,6 +23,14 @@ Comments.init (
                 key: 'id',
                 unique: false,
             }
+        },
+        post_id: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+            references: {
+                model: 'posts',
+                key: 'id',
+            },
         },
         date: {
             type: DataTypes.DATE,

@@ -109,7 +109,6 @@ router.post("/signup", async (req, res) => {
 
 // Delete route
 router.delete("/:id", (req, res) => {
-  // Looks for the books based on isbn given in the request parameters and deletes the instance from the database
   User.destroy({
     where: {
       id: req.params.id,

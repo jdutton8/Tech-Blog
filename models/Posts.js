@@ -16,7 +16,7 @@ Posts.init(
       allowNull: false,
     },
     content: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: false,
     },
     date_created: {
@@ -24,9 +24,9 @@ Posts.init(
       allowNull: false,
       defaultValue: DataTypes.NOW,
     },
-    created_by: {
+    user_id: {
       type: DataTypes.INTEGER,
-      allowNull: true,
+      allowNull: false,
       references: {
         model: 'users',
         key: 'id',
@@ -45,7 +45,7 @@ Posts.init(
   {
     hooks: {
       afterCreate: async (newCreator) => {
-        customElements.create({user_id: newCreator.created_by})
+        customElements.create({user_id: newCreator.user_id})
       }
     },
     sequelize,
