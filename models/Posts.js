@@ -7,7 +7,7 @@ Posts.init(
   {
     id: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      //allowNull: false,
       primaryKey: true,
       autoIncrement: true,
     },
@@ -28,7 +28,7 @@ Posts.init(
       type: DataTypes.INTEGER,
       allowNull: false,
       references: {
-        model: 'users',
+        model: 'user',
         key: 'id',
         unique: false
       }
