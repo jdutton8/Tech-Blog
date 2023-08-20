@@ -12,15 +12,13 @@
 <body>
   <div class="flex-column justify-space-around">
     <header class="display-flex justify-space-between align-center p-2">
-      <h1>
-        <span role="img" aria-label="money">💸</span>
-        <a href="/">Fund My Project!</a>
-      </h1>
+      <h1>Tech Blog</h1>
       <nav>
         <!-- Conditionally render login or logout links -->
         {{#if logged_in}}
+        <a href="/">Home</a>
         <a href="/profile">profile</a> |
-        <button class="no-button" id="logout">logout</button>
+        <button class="logout-button" id="logout">logout</button>
         {{else}}
         <a href="/login">login</a>
         {{/if}}
@@ -30,9 +28,6 @@
       <!-- Render the sub layout -->
       {{{ body }}}
     </main>
-    <footer>
-      
-    </footer>
   </div>
 
   <!-- Render script for logged in users only -->

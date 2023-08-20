@@ -4,7 +4,7 @@ const { Posts, User, Comments } = require('../../models');
 //render new comment view with form
 router.get('/new', (req, res) => {
     res.render('new-comment'), {
-        loggedIn: req.session.loggedIn
+        logged_in: req.session.logged_in
     };
 }
 );

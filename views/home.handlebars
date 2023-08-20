@@ -1,0 +1,17 @@
+{{#if logged_in}}
+    <div style="text-align:center">
+        <h3>See what everyone has been talking about!</h3>
+        <p>Or go to your profile to create a post</p>
+        <br>
+        <br>
+        <br>
+        <h3>Blog Posts</h3>
+        {{!-- Loop over each object in the posts array --}}
+        {{#each posts as |post|}}
+        {{!-- Display the post title --}}
+        <h5>{{title}}</h5>
+        {{!-- Display the post body --}}
+        <p>{{content}}</p>
+        {{/each}}
+    </div>
+{{/if}}

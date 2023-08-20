@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Posts, User, Comments } = require('../models');
+const { Posts, User, } = require('../models');
 const withAuth = require('../utils/auth');
 
 router.get('/', async (req, res) => {
@@ -13,12 +13,9 @@ router.get('/', async (req, res) => {
       ],
     });
 
-    const posts = postData.map((Posts) => Posts.get({plain:true}));
+    const posts = postData.map((post) => post.get({plain:true}));
 
-    res.render('home', {
-      posts, 
-      logged_in: req.session.logged_in,
-    });
+    res.render('home', { posts, logged_in: req.session.logged_in });
   } catch (err) {
     res.status(500).json(err)
   }
@@ -31,9 +28,9 @@ router.get('/profile', withAuth, async (req, res) => {
           attributes: { exclude: ['password'] },
           include: [{ model: Posts }],
       });
-      console.log(userData);
+      const user = userData.get({ plain: true});
       res.render('profile', {
-          userData,
+          ...user,
           logged_in: true,
       });
   } catch (err) {
@@ -43,21 +40,17 @@ router.get('/profile', withAuth, async (req, res) => {
 );
 
 router.get('/login', (req, res) => {
-  try {
-    if(req.session.loggedIn) {
-      res.redirect('/');
+    if(req.session.logged_In) {
+      res.redirect('/profile');
       return;
     }
     res.render('login');
 
-  } catch (err) {
-    res.status(500).json(err);
-  }
-    });
+  });
 
  router.get('/signup', (req, res) => {
     if (req.session.logged_in) {
-        res.redirect('/');
+        res.redirect('/profile');
         return;
     }
   
