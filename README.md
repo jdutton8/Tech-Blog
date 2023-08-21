@@ -15,6 +15,8 @@ This application requires Node.js, Express.js, Sequelize, mysql2, connection-ses
 ## Usage 
 This application will allow users to sign up if they are not a member, then once they are logged in they are able to view their user profiles, add new posts, and comment on other developers post. 
 
+You can view the deployed application here. (https://enigmatic-beach-62007-004867f4d28e.herokuapp.com/)
+
 ## License 
 This project is license under MIT
 
